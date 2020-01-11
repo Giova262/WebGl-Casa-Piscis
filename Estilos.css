@@ -1,0 +1,24 @@
+body{ 
+    background-color: rgba(4, 38, 73, 0.801); 
+}
+h1 {
+    text-align: center;
+    margin: 0px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+}
+h2{
+    color: rgba(255, 255, 255, 0.507);
+    font-size:  20px;
+}
+h3{
+    color: rgba(255, 255, 255, 0.507);
+    text-decoration: underline;
+}
+.reloj{
+    font-size:  50px;
+    text-align: center;
+}
+.tiempo{font-size: 20px}
+canvas{ background-color: white;}
+textarea{ background-color: black; }

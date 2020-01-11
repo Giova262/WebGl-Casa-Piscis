@@ -1,0 +1,253 @@
+<!doctype html>
+<meta content="text/html;charset=ISO-8859-1" http-equiv="Content-Type">
+<meta content="ISO-8859-1" http-equiv="encoding">
+
+<title>Casa de Piscis</title>
+
+<html>
+
+    <head>
+
+        <!-- Styles -->
+        <link rel="stylesheet" type="text/css" href="Estilos.css"/>
+
+        <!-- Libraries -->
+        <script type="text/javascript" src="Librerias/gl-matrix.js"></script>
+        <script type="text/javascript" src="Librerias/jquery-1.12.4.js"></script>
+        <script type="text/javascript" src="Librerias/dat.gui.js"></script>
+        
+        <!-- JavaScript -->
+        <script type="text/javascript" src="Utils/Main.js"></script>
+        <script type="text/javascript" src="Utils/Camara.js"></script>
+        <script type="text/javascript" src="Utils/Objeto.js"></script>
+
+        <script type="text/javascript" src="Geometrias/Padres/Dibujable.js"></script>
+        <script type="text/javascript" src="Geometrias/Padres/SuperficieDeRevolucion.js"></script>
+        <script type="text/javascript" src="Geometrias/Plano.js"></script>
+        <script type="text/javascript" src="Geometrias/Esfera.js"></script>
+        <script type="text/javascript" src="Geometrias/Cilindro.js"></script>
+        <script type="text/javascript" src="Geometrias/Dona.js"></script>
+        <script type="text/javascript" src="Geometrias/Rectangulo.js"></script>
+       
+        <script type="text/javascript" src="Entidades/Prototipo.js"></script>
+ 
+        <!-- Vertex Shader -->
+        <script id="shader-vs" type="x-shader/x-vertex">
+
+            attribute vec3 aVertexPosition;
+            attribute vec2 aVertexTexCoord;
+            attribute vec3 aVertexNormal;
+            attribute vec3 aVertexTangente;
+
+            uniform mat4 uMMatrix;
+            uniform mat4 uVMatrix;
+            uniform mat4 uPMatrix; 
+            uniform mat3 uNMatrix;
+
+            uniform vec3 ulightPos;   // Posicion del Sol
+            uniform vec3 ulightPos2;  // Posicion de la Luna
+
+            uniform vec3 uCameraPos;
+            uniform  float offset;
+            
+            uniform bool useNormalMapVertex;
+            uniform bool useTextureAnimacion;
+            uniform bool useDisplacementMap;
+
+            uniform sampler2D uDisplacementSampler;
+
+            varying highp vec2 vTextureCoord;  
+            varying highp vec3 vN;
+            varying highp vec3 vV;
+            varying highp vec3 vS;   // Source Sol
+            varying highp vec3 vS2;  // Source Luna
+
+            void main(void) {
+
+                /** POSICION DEL PUNTO EN EL MUNDO */
+                vec4 P = uMMatrix * vec4(aVertexPosition, 1.0);
+
+                /** Displazamiento sin mover el relieve */
+
+               /*
+
+                if(useDisplacementMap){        
+                   vec3 relieve =  normalize( texture2D(uDisplacementSampler, aVertexTexCoord).rgb ) ; 
+                   P.z += relieve.r * 15.0;
+                }
+
+               */
+                
+                /** MAPA DE NORMALES */
+                if(useNormalMapVertex){
+
+                    vec3 Normal = normalize(uNMatrix * aVertexNormal);
+                    vec3 Tangente = normalize(uNMatrix * aVertexTangente);
+                    vec3 Binormal = cross(Normal, Tangente);
+
+                    mat3 tbnMatrix = mat3(
+                        Tangente.x, Binormal.x, Normal.x,
+                        Tangente.y, Binormal.y, Normal.y,
+                        Tangente.z, Binormal.z, Normal.z
+                    );
+
+                    vN  = normalize( uNMatrix * aVertexNormal) ;
+                    vV  = vec3( vec4(uCameraPos,1.0) - P ) * tbnMatrix ;
+                    vS  = vec3( vec4(ulightPos ,1.0) - P ) * tbnMatrix ;
+                    vS2 = vec3( vec4(ulightPos2,1.0) - P ) * tbnMatrix ;
+
+                }else{
+                    
+                    vN  = normalize( uNMatrix * aVertexNormal ) ;
+                    vV  = vec3( vec4(uCameraPos,1.0) - P ) ;
+                    vS  = vec3( vec4(ulightPos ,1.0) - P ) ;
+                    vS2 = vec3( vec4(ulightPos2,1.0) - P ) ;
+                }
+
+
+                /** ANIMACION */ 
+                if(useTextureAnimacion){
+                    vTextureCoord = offset * vec2(1.0, 0.0) + aVertexTexCoord;
+                    if( vTextureCoord.x >= 1.0 ) vTextureCoord.x -= 1.0;
+
+                    //Relieve con Animacion
+                    if(useDisplacementMap){
+                        vec3 relieve =  normalize( texture2D(uDisplacementSampler,vTextureCoord).rgb ) ; 
+                       // P.z += relieve.r * 15.0;
+                        P.xyz += relieve.r * 15.0 * uNMatrix * aVertexNormal;
+                    }
+
+                }else{
+                    vTextureCoord =  aVertexTexCoord;
+
+                    // Relieve sin Animacion
+                    if(useDisplacementMap){      
+                        vec3 relieve =  normalize( texture2D(uDisplacementSampler,vTextureCoord).rgb ) ; 
+                       // P.z += relieve.r * 15.0;
+                       P.xyz += relieve.r * 15.0 * uNMatrix * aVertexNormal;
+                    }
+                }        
+               
+                /** POSICION */
+                gl_Position = uPMatrix * uVMatrix * P;
+                
+            }
+
+        </script>
+
+        <!-- Fragment Shader-->
+        <script id="shader-fs" type="x-shader/x-fragment">
+            
+            precision mediump float;
+
+            uniform  vec3 difusa_color;
+            uniform  vec3 specular_color;
+            uniform  vec3 ambient_color;
+            uniform  float intensidad;
+            uniform  float intensidad2;
+            uniform  float ka;
+            uniform  float kd;
+            uniform  float ks;
+            uniform  float n;
+            uniform sampler2D uTexturaSampler;
+            uniform sampler2D uNormalSampler;
+            uniform bool useTexture;
+            uniform vec3 color_default;
+
+            uniform bool useNormalMapFragment;
+
+            varying highp vec2 vTextureCoord;  
+            varying highp vec3 vN;
+            varying highp vec3 vV;
+            varying highp vec3 vS;   // Source Sol
+            varying highp vec3 vS2;  // Source Luna
+
+            void main(void) {
+
+                highp vec3 N;
+                highp vec3 V = normalize(vV);  
+                highp vec4 texelColor = texture2D(uTexturaSampler, vTextureCoord);
+               
+
+             /** NORMAL MAPPING*/
+
+                if(useNormalMapFragment){
+                     N = normalize(2.0 * (texture2D(uNormalSampler, vTextureCoord).rgb - 0.5));
+                }else{
+                     N = normalize(vN);
+                }
+
+            /** ILUMINACION */
+
+                /* Sol */
+
+                float distancia_ = sqrt(pow(vS[0], 2.0) + pow(vS[1], 2.0) + pow(vS[2], 2.0)); // modulo del vector
+                float ajuste = intensidad / distancia_ ; // Como decae aca debe ser mas complejo
+
+                highp vec3 S = normalize(vS);  // Source Sol
+                highp vec3 R = reflect(-S,N);   // Refleccion 1
+
+                highp vec3 ambient  = ka * ambient_color * ajuste ;
+                highp vec3 diffuse  = kd * difusa_color * max( dot(N,S),0.0) * ajuste ;
+                highp vec3 specular = ks * specular_color * pow( max(dot(R,V),0.0) ,n) * ajuste ;
+
+        
+                /* Luna */
+
+                float distancia_2 = sqrt(pow(vS2[0], 2.0) + pow(vS2[1], 2.0) + pow(vS2[2], 2.0)); // modulo del vector
+                float ajuste2 = intensidad2 / distancia_2 ; // Como decae aca debe ser mas complejo
+
+                highp vec3 S2 = normalize(vS2);  // Source Luna
+                highp vec3 R2 = reflect(-S2,N);   // Refleccion 2
+
+                highp vec3 ambient2  = ka * ambient_color * ajuste2 ;
+                highp vec3 diffuse2  = kd * difusa_color * max( dot(N,S2),0.0) * ajuste2;
+                highp vec3 specular2 = ks * specular_color * pow( max(dot(R2,V),0.0) ,n) * ajuste2;
+
+             
+            /** TEXTURA*/
+
+                if(useTexture) {   
+
+                    /*
+                    highp vec3 f_color1 =  ambient  + diffuse + specular  ;
+                    highp vec3 f_color2 =  ambient2 + diffuse + specular2 ;
+                    highp vec3 f_color =  f_color1 + f_color2 ;
+                    gl_FragColor = vec4(texelColor.rgb * f_color, texelColor.a);*/
+                    
+
+                    highp vec4 f_color1 = vec4( specular ,1.0) + vec4(ambient + diffuse  ,1.0) * texelColor;
+                    highp vec4 f_color2 = vec4( specular2,1.0) + vec4(ambient +diffuse2 ,1.0) * texelColor;
+                    gl_FragColor =  f_color1 + f_color2 ;
+                 
+				}else{  
+                    
+                    highp vec4 f_color1 = vec4( specular ,1.0) + vec4(ambient + diffuse  ,1.0) * vec4(color_default,1.0);
+                    highp vec4 f_color2 = vec4( specular2,1.0) + vec4(ambient +diffuse2 ,1.0) * vec4(color_default,1.0);
+                    gl_FragColor =  f_color1 + f_color2 ;
+
+                }
+
+            }
+
+        </script>
+
+        <h1> Casa de Piscis </h1>
+
+    </head>
+
+    <body onload="main()">
+
+        <script type="text/javascript" src="Utils/Menu.js"></script>
+        <img id="ejemplo-textura" crossOrigin = "anonymous" src="Texturas/Difusas/ejemplo.jpg"  width="0" height="0"></img> 
+        <img id="ejemplo-normal" crossOrigin = "anonymous" src="Texturas/Normales/ejemploN.png"  width="0" height="0"></img> 
+        
+        <center>
+            <canvas id="canvas" width="1800" height="900">
+                Tu navegador no soporta el elemento Canvas de HTML5
+            </canvas>
+        </center>
+      
+    </body>
+    
+</html>
