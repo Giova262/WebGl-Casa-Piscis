@@ -2,7 +2,7 @@
 
 var previousClientX = 0,
     previousClientY = 0,
-    radio = 250,
+    radio = 450,
     radio2 = 0;
     escala= 1.0;
     alfa = Math.PI, 
@@ -155,7 +155,7 @@ class Camara{
         if (alfa<0) alfa=Math.PI*2;
         if (alfa>Math.PI*2) alfa=0;
 
-        if (beta<  -Math.PI/2 +0.08) beta = -Math.PI/2 + 0.08;
+        //if (beta<  -Math.PI/2 +0.08) beta = -Math.PI/2 + 0.08;
         if( beta >= 0.0 ) beta =  -beta ;
        
         /** Camara update */   
