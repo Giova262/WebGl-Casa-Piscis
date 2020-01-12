@@ -7,14 +7,19 @@ class Prototipo{
         this.plano = new Objeto(geometria);
 
         /**Pisos */
-        var geometria_Base = new Rectangulo(100,120,20,[1,1,1],50,50);
+        var geometria_Base = new Rectangulo(120,160,20,[1,1,1],50,50);
         this.base = new Objeto(geometria_Base)
 
         var geometria_Base_2 = new Rectangulo(80,80,10,[1,1,1],50,50);
         this.base_2 = new Objeto(geometria_Base_2)
 
+        /**Techo 2 */
+        var geometria_techo_2 = new Triangulo(50,50,80,[1,1,1]);
+        this.techo_2 = new Objeto(geometria_techo_2)
+
         /**Techo */
         this.techo_1 = new Objeto(geometria_Base_2)
+            this.techo_1.addChildren(this.techo_2)
 
         /**Casa */
         var geometria_Base_3 = new Rectangulo(60,60,60,[1,1,1],50,50);
@@ -43,6 +48,8 @@ class Prototipo{
         this.col_16 = new Objeto(geometria_col_1)
         this.col_17 = new Objeto(geometria_col_1)
         this.col_18 = new Objeto(geometria_col_1)
+
+        
         
 
         /**Configuracion inicial */
@@ -76,13 +83,23 @@ class Prototipo{
         
 
         /** Movimientos iniciales */
-        this.plano.escalar([1,1,1]);
-        this.plano.rotar(0,[0,0,1]);
+
+        /**Escalar */
+        this.plano.escalar([3,3,1]);
+
+        /**Rotacion */
+        this.techo_2.rotarZ(Math.PI/4);
+        this.techo_2.rotarX(-Math.PI/2);
+       
+        
+
+        /**Translacion */
         this.plano.trasladar([0,0,0]);
 
         this.base_2.trasladar([0,20,20]);
 
         this.techo_1.trasladar([0,20,85]);
+        this.techo_2.trasladar([-32,-32,-40]);
         
         this.casa.trasladar([0,20,30]);
 
@@ -112,6 +129,7 @@ class Prototipo{
         this.plano.setDrawType(gl.TRIANGLES);
         this.base.setDrawType(gl.TRIANGLES);
         this.base_2.setDrawType(gl.TRIANGLES);
+        this.techo_2.setDrawType(gl.TRIANGLES);
     }
 
     update(){
@@ -119,6 +137,8 @@ class Prototipo{
     }
 
     dibujar(){
+        this.techo_2 .dibujar()
+        
         this.plano.dibujar();
 
         this.base_2.dibujar();
