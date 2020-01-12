@@ -58,6 +58,7 @@ var     canvas = null;
 
         camara = null;
         prototipo = null;
+        sol = null;
         
 
 /** Inicio */
@@ -80,6 +81,7 @@ function initObjects(){
 
     /** Escena */
     prototipo = new Prototipo();
+    sol = new Sol();
    
 }
 
@@ -93,14 +95,19 @@ function draw(){
 
     /** Update */
     if(run){
-        tiempo += 200;     
+        tiempo += 200;  
+        sol.update();   
     }
 
     /** Offset */
     offset +=  0.0001; 
     if( offset >= 1) offset = 0.0;
+
+    /** Iluminacion  sol.getPosition()*/
+    gl.uniform3f(lightPosLocation, ...sol.getPosition()  );
     
     /** Dibujo */
+    sol.dibujar();
     prototipo.dibujar();
 }
 
@@ -119,7 +126,7 @@ function initWebGL(){
     if(!gl) alert(" No se puedo iniciar WebGL , Lo siento ");
     
     /** Color con el que se limpia la pantalla */
-    gl.clearColor(1,1,1,1.0);
+    gl.clearColor(0/255, 0/255, 0/255,1.0);
     gl.enable(gl.DEPTH_TEST);
     gl.depthFunc(gl.LEQUAL);
     gl.viewport(0,0, canvas.width , canvas.height);
@@ -219,8 +226,8 @@ function initLocalitations(){
 function configuracionInicial(){
 
      /** Configuracion Luz */
-     gl.uniform1f(intensidadLightLocation ,10.0);
-     gl.uniform1f(intensidadLight2Location,50.0);
+     gl.uniform1f(intensidadLightLocation ,80.0);
+     gl.uniform1f(intensidadLight2Location,0.0);
  
      gl.uniform3f(specularColorLocation,...[1,1,1] );
      gl.uniform3f(ambientColorLocation ,...[1,1,1] );

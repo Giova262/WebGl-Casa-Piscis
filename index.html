@@ -31,6 +31,7 @@
         <script type="text/javascript" src="Geometrias/Triangulo.js"></script>
        
         <script type="text/javascript" src="Entidades/Prototipo.js"></script>
+        <script type="text/javascript" src="Entidades/Sol.js"></script>
  
         <!-- Vertex Shader -->
         <script id="shader-vs" type="x-shader/x-vertex">
@@ -115,7 +116,8 @@
                     if(useDisplacementMap){
                         vec3 relieve =  normalize( texture2D(uDisplacementSampler,vTextureCoord).rgb ) ; 
                        // P.z += relieve.r * 15.0;
-                        P.xyz += relieve.r * 15.0 * uNMatrix * aVertexNormal;
+                        //P.z = 15.0;
+                        P.xyz += ((relieve.r) / 255.0 ) * 15.0 * uNMatrix * aVertexNormal;
                     }
 
                 }else{
@@ -125,7 +127,10 @@
                     if(useDisplacementMap){      
                         vec3 relieve =  normalize( texture2D(uDisplacementSampler,vTextureCoord).rgb ) ; 
                        // P.z += relieve.r * 15.0;
-                       P.xyz += relieve.r * 15.0 * uNMatrix * aVertexNormal;
+
+                       if(relieve.r >= 0.05 ){ 
+                            P.xyz += relieve.r * 7.0 * uNMatrix * aVertexNormal;
+                       }
                     }
                 }        
                
@@ -240,8 +245,8 @@
     <body onload="main()">
 
         <script type="text/javascript" src="Utils/Menu.js"></script>
-        <img id="ejemplo-textura" crossOrigin = "anonymous" src="Texturas/Difusas/ejemplo.jpg"  width="0" height="0"></img> 
-        <img id="ejemplo-normal" crossOrigin = "anonymous" src="Texturas/Normales/ejemploN.png"  width="0" height="0"></img> 
+        <img id="ejemplo-textura" crossOrigin = "anonymous" src="Texturas/Difusas/rosas2.jpg"  width="0" height="0"></img> 
+        <img id="ejemplo-normal" crossOrigin = "anonymous" src="Texturas/Normales/rosas2N.png"  width="0" height="0"></img> 
         
         <center>
             <canvas id="canvas" width="1800" height="900">
