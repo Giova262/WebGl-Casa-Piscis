@@ -48,6 +48,10 @@ var     canvas = null;
 
         ejemplo_textura = null;
         ejemplo_normal = null;
+
+        piedra_textura = null;
+        piedra_normal = null;
+
     
     /** Matrices */
 
@@ -59,6 +63,7 @@ var     canvas = null;
         camara = null;
         prototipo = null;
         sol = null;
+        montanias = null
         
 
 /** Inicio */
@@ -82,6 +87,7 @@ function initObjects(){
     /** Escena */
     prototipo = new Prototipo();
     sol = new Sol();
+    montanias = new Montanias() 
    
 }
 
@@ -108,6 +114,7 @@ function draw(){
     
     /** Dibujo */
     sol.dibujar();
+    montanias.dibujar();
     prototipo.dibujar();
 }
 
@@ -226,7 +233,7 @@ function initLocalitations(){
 function configuracionInicial(){
 
      /** Configuracion Luz */
-     gl.uniform1f(intensidadLightLocation ,80.0);
+     gl.uniform1f(intensidadLightLocation ,40.0);
      gl.uniform1f(intensidadLight2Location,0.0);
  
      gl.uniform3f(specularColorLocation,...[1,1,1] );
@@ -253,9 +260,11 @@ function initTextures(){
 
     /** Mapas de Texturas */
     ejemplo_textura  = getTexture("ejemplo-textura");
+    piedra_textura  = getTexture("roca-textura");
         
     /** Mapas de Normales */         
-    ejemplo_normal = getTexture("ejemplo-normal");    
+    ejemplo_normal = getTexture("ejemplo-normal");   
+    piedra_normal  = getTexture("roca-normal"); 
      
 }
 

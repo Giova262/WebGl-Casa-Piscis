@@ -32,6 +32,7 @@
        
         <script type="text/javascript" src="Entidades/Prototipo.js"></script>
         <script type="text/javascript" src="Entidades/Sol.js"></script>
+        <script type="text/javascript" src="Entidades/Montanias.js"></script>
  
         <!-- Vertex Shader -->
         <script id="shader-vs" type="x-shader/x-vertex">
@@ -241,12 +242,17 @@
         <h1> Casa de Piscis </h1>
 
     </head>
-
+    
     <body onload="main()">
 
         <script type="text/javascript" src="Utils/Menu.js"></script>
+
         <img id="ejemplo-textura" crossOrigin = "anonymous" src="Texturas/Difusas/rosas2.jpg"  width="0" height="0"></img> 
         <img id="ejemplo-normal" crossOrigin = "anonymous" src="Texturas/Normales/rosas2N.png"  width="0" height="0"></img> 
+
+        <img id="roca-textura" crossOrigin = "anonymous" src="Texturas/Difusas/piedras.jpg"  width="0" height="0"></img> 
+        <img id="roca-normal" crossOrigin = "anonymous" src="Texturas/Difusas/piedras.jpg"  width="0" height="0"></img> 
+
         
         <center>
             <canvas id="canvas" width="1800" height="900">

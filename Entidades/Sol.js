@@ -7,7 +7,7 @@ class Sol{
       
         this.sol = new Objeto(esferaGeometria);
 
-        this.radio = 220;
+        this.radio = 150;
         this.position = [0,0,1];
         this.altura = 180;
 
