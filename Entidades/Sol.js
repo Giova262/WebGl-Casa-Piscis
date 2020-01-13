@@ -9,7 +9,7 @@ class Sol{
 
         this.radio = 150;
         this.position = [0,0,1];
-        this.altura = 180;
+        this.altura = 280;
 
         this.init();
     }

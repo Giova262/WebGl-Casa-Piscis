@@ -237,7 +237,7 @@ function initLocalitations(){
 function configuracionInicial(){
 
      /** Configuracion Luz */
-     gl.uniform1f(intensidadLightLocation ,40.0);
+     gl.uniform1f(intensidadLightLocation ,50.0);
      gl.uniform1f(intensidadLight2Location,0.0);
  
      gl.uniform3f(specularColorLocation,...[1,1,1] );
