@@ -2,7 +2,7 @@
 
 var previousClientX = 0,
     previousClientY = 0,
-    radio = 650,
+    radio = 1550,
     radio2 = 0;
     escala= 1.0;
     alfa = Math.PI, 

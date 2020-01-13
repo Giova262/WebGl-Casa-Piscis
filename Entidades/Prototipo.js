@@ -78,6 +78,8 @@ class Prototipo{
         /**Ecalera Gigante 1 */
         var geometria_esc_central = new Triangulo(170,300,45,[1,1,1]);
         this.base_esc_1_1 = new Objeto(geometria_esc_central)
+        var geometria_esc_central_2 = new Triangulo(120,160,45,[1,1,1]);
+        this.base_esc_1_2 = new Objeto(geometria_esc_central_2)
 
         
         /**Agregar Hijos */
@@ -133,7 +135,7 @@ class Prototipo{
         this.plano.animacion(false);
         
         /** Iluminacion */
-        this.plano.phongCoheficientes(1,1,1,60);
+        this.plano.phongCoheficientes(0.5,1,1,60);
         
         /**Escalar */
         this.plano.escalar([3,3,1]);
@@ -144,6 +146,9 @@ class Prototipo{
 
         this.base_esc_1_1.rotarX(Math.PI/2);
         this.base_esc_1_1.rotarY(-Math.PI/2);
+
+        this.base_esc_1_2.rotarX(Math.PI/2);
+        this.base_esc_1_2.rotarY(-Math.PI/2);
        
         /**Translacion */
         this.plano.trasladar([0,0,0]);
@@ -151,6 +156,7 @@ class Prototipo{
         this.base.trasladar([0,80,150]);
 
         this.base_esc_1_1.trasladar([0,0,-24]);
+        this.base_esc_1_2.trasladar([-300,150,-24]);
 
         this.escalera_1_1.trasladar([0,-22,20]);
         this.escalera_1_2.trasladar([0,-27,20]);
@@ -200,6 +206,7 @@ class Prototipo{
         this.base.dibujar();
 
        this.base_esc_1_1.dibujar()
+       this.base_esc_1_2.dibujar()
  
     }
 }
