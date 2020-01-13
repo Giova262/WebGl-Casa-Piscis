@@ -155,7 +155,7 @@ class Camara{
         if (alfa<0) alfa=Math.PI*2;
         if (alfa>Math.PI*2) alfa=0;
 
-        //if (beta<  -Math.PI/2 +0.08) beta = -Math.PI/2 + 0.08;
+        if (beta<  -Math.PI/2 +0.08) beta = -Math.PI/2 + 0.08;
         if( beta >= 0.0 ) beta =  -beta ;
        
         /** Camara update */   
@@ -163,7 +163,7 @@ class Camara{
         var y = radio * escala * Math.sin(alfa) * Math.sin(beta);
         var z = radio * escala * Math.cos(beta);
 
-        mat4.lookAt(viewMatrix, [x, y, z], [0, 0, 150], [0,0,1]);
+        mat4.lookAt(viewMatrix, [x, y, z], [0,0, 250], [0,0,1]);
         gl.uniformMatrix4fv(viewMatrixLocation, false, viewMatrix);
         
         gl.uniform3f(cameraPosLocation,x,y,z);

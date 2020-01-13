@@ -52,6 +52,23 @@ class Prototipo{
             this.escalera_2_32 = new Objeto(geometria_esc_2)
             this.escalera_2_33 = new Objeto(geometria_esc_2)
 
+            this.escalera_3_1 = new Objeto(geometria_esc_2)
+            this.escalera_3_2 = new Objeto(geometria_esc_2)
+
+            this.escalera_3_3 = new Objeto(geometria_esc_2)
+            this.escalera_3_4 = new Objeto(geometria_esc_2)
+            this.escalera_3_5 = new Objeto(geometria_esc_2)
+            this.escalera_3_6 = new Objeto(geometria_esc_2)
+            this.escalera_3_7 = new Objeto(geometria_esc_2)
+            this.escalera_3_8 = new Objeto(geometria_esc_2)
+            this.escalera_3_9 = new Objeto(geometria_esc_2)
+            this.escalera_3_10 = new Objeto(geometria_esc_2)
+            this.escalera_3_11 = new Objeto(geometria_esc_2)
+            this.escalera_3_12 = new Objeto(geometria_esc_2)
+            this.escalera_3_13 = new Objeto(geometria_esc_2)
+            this.escalera_3_14 = new Objeto(geometria_esc_2)
+            this.escalera_3_15 = new Objeto(geometria_esc_2)
+
         /**Pisos */
         var geometria_Base = new Rectangulo(120,160,20,[1,1,1],50,50);
         this.base = new Objeto(geometria_Base)      
@@ -75,18 +92,15 @@ class Prototipo{
         this.col_4 = new Objeto(geometria_col_1)
         this.col_5 = new Objeto(geometria_col_1)
         this.col_6 = new Objeto(geometria_col_1)
-
         this.col_7 = new Objeto(geometria_col_1)
         this.col_8 = new Objeto(geometria_col_1)
         this.col_9 = new Objeto(geometria_col_1)
         this.col_10 = new Objeto(geometria_col_1)
         this.col_11 = new Objeto(geometria_col_1)
         this.col_12 = new Objeto(geometria_col_1)
-
         this.col_13 = new Objeto(geometria_col_1)
         this.col_14 = new Objeto(geometria_col_1)
         this.col_15 = new Objeto(geometria_col_1)
-
         this.col_16 = new Objeto(geometria_col_1)
         this.col_17 = new Objeto(geometria_col_1)
         this.col_18 = new Objeto(geometria_col_1)
@@ -95,13 +109,12 @@ class Prototipo{
         var geometria_esc_central = new Triangulo(175,280,5,[1,1,1]);
         this.base_esc_1_1 = new Objeto(geometria_esc_central)
         this.base_esc_1_2 = new Objeto(geometria_esc_central)
-        var geometria_esc_central_2 = new Triangulo(120,160,45,[1,1,1]);
+        var geometria_esc_central_2 = new Triangulo(120,160,5,[1,1,1]);
         this.base_esc_2_1 = new Objeto(geometria_esc_central_2)
+        this.base_esc_2_2 = new Objeto(geometria_esc_central_2)
 
         
         /**Agregar Hijos */
-
-        //this.plano.addChildren(this.base_esc_1_1)
 
         this.base.addChildren(this.escalera_1_1)
         this.base.addChildren(this.escalera_1_2)
@@ -167,16 +180,35 @@ class Prototipo{
         this.base_esc_1_1.addChildren(this.escalera_2_32)
         this.base_esc_1_1.addChildren(this.escalera_2_33)
 
+        this.base_esc_2_1.addChildren(this.escalera_3_1)
+        this.base_esc_2_1.addChildren(this.escalera_3_2)
+
+        this.base_esc_2_1.addChildren(this.escalera_3_3)
+        this.base_esc_2_1.addChildren(this.escalera_3_4)
+        this.base_esc_2_1.addChildren(this.escalera_3_5)
+        this.base_esc_2_1.addChildren(this.escalera_3_6)
+        this.base_esc_2_1.addChildren(this.escalera_3_7)
+        this.base_esc_2_1.addChildren(this.escalera_3_8)
+        this.base_esc_2_1.addChildren(this.escalera_3_9)
+        this.base_esc_2_1.addChildren(this.escalera_3_10)
+        this.base_esc_2_1.addChildren(this.escalera_3_11)
+        this.base_esc_2_1.addChildren(this.escalera_3_12)
+        this.base_esc_2_1.addChildren(this.escalera_3_13)
+        this.base_esc_2_1.addChildren(this.escalera_3_14)
+        this.base_esc_2_1.addChildren(this.escalera_3_15)
+
+
         /**Configuracion inicial */
         this.configuracion();
     }
 
     configuracion(){
 
+
         /** Valores de mapas */
-        this.plano.setMapaDifuso(ejemplo_textura);
-        this.plano.setMapaNormal(ejemplo_normal);
-        this.plano.setMapaRelieve(ejemplo_normal);
+        this.plano.setMapaDifuso(piedra_textura);
+        this.plano.setMapaNormal(piedra_normal);
+        this.plano.setMapaRelieve(piedra_relieve);
         this.plano.coheficienteRelieve(280.0);
 
         /** Estilo */
@@ -186,7 +218,7 @@ class Prototipo{
         this.plano.animacion(false);
         
         /** Iluminacion */
-        this.plano.phongCoheficientes(0.5,1,1,60);
+        this.plano.phongCoheficientes(0.1,2,0.2,50);
         
         /**Escalar */
         this.plano.escalar([3,3,1]);
@@ -202,6 +234,8 @@ class Prototipo{
 
         this.base_esc_2_1.rotarX(Math.PI/2);
         this.base_esc_2_1.rotarY(-Math.PI/2);
+        this.base_esc_2_2.rotarX(Math.PI/2);
+        this.base_esc_2_2.rotarY(-Math.PI/2);
        
         /**Translacion */
         this.plano.trasladar([0,0,0]);
@@ -211,6 +245,7 @@ class Prototipo{
         this.base_esc_1_1.trasladar([0,0,-24]);
         this.base_esc_1_2.trasladar([0,0,24]);
         this.base_esc_2_1.trasladar([-300,150,-24]);
+        this.base_esc_2_2.trasladar([-300,150,24]);
 
         this.escalera_1_1.trasladar([0,-22,20]);
         this.escalera_1_2.trasladar([0,-27,20]);
@@ -250,6 +285,22 @@ class Prototipo{
         this.escalera_2_31.trasladar([240,10,2.5]);
         this.escalera_2_32.trasladar([248,5,2.5]);
         this.escalera_2_33.trasladar([256,0,2.5]);
+
+        this.escalera_3_1.trasladar([0,110,0]);
+        this.escalera_3_2.trasladar([10,102,0]);
+        this.escalera_3_3.trasladar([20,94,0]);
+        this.escalera_3_4.trasladar([30,86,0]);
+        this.escalera_3_5.trasladar([40,78,0]);
+        this.escalera_3_6.trasladar([50,70,0]);
+        this.escalera_3_7.trasladar([60,62,0]);
+        this.escalera_3_8.trasladar([70,54,0]);
+        this.escalera_3_9.trasladar([80,46,0]);
+        this.escalera_3_10.trasladar([90,38,0]);
+        this.escalera_3_11.trasladar([100,30,0]);
+        this.escalera_3_12.trasladar([110,22,0]);
+        this.escalera_3_13.trasladar([120,14,0]);
+        this.escalera_3_14.trasladar([130,10,0]);
+        this.escalera_3_15.trasladar([140,10,0]);
 
         this.base_2.trasladar([0,20,20]);
 
@@ -294,6 +345,7 @@ class Prototipo{
         this.base.dibujar();
 
        this.base_esc_2_1.dibujar()
+       this.base_esc_2_2.dibujar()
        this.base_esc_1_1.dibujar()
        this.base_esc_1_2.dibujar()
  

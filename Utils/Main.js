@@ -47,11 +47,11 @@ var     canvas = null;
       
     /** Texturas */
 
-        ejemplo_textura = null;
-        ejemplo_normal = null;
+     
 
         piedra_textura = null;
         piedra_normal = null;
+        piedra_relieve = null;
 
     
     /** Matrices */
@@ -263,12 +263,13 @@ function configuracionInicial(){
 function initTextures(){
 
     /** Mapas de Texturas */
-    ejemplo_textura  = getTexture("ejemplo-textura");
-    piedra_textura  = getTexture("roca-textura");
-        
+    piedra_textura  = getTexture("piedras-textura");
+
     /** Mapas de Normales */         
-    ejemplo_normal = getTexture("ejemplo-normal");   
-    piedra_normal  = getTexture("roca-normal"); 
+    piedra_normal  = getTexture("piedras-normal"); 
+
+    /** Mapas de Revielve */         
+    piedra_relieve  = getTexture("piedras-relieve"); 
      
 }
 
