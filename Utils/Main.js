@@ -46,12 +46,13 @@ var     canvas = null;
         useDisplacementMapLocation = null;
       
     /** Texturas */
-
-     
-
         piedra_textura = null;
         piedra_normal = null;
         piedra_relieve = null;
+     
+        rosas_textura = null;
+        rosas_normal = null;
+        rosas_relieve = null;
 
     
     /** Matrices */
@@ -262,14 +263,19 @@ function configuracionInicial(){
 
 function initTextures(){
 
+  
+
     /** Mapas de Texturas */
     piedra_textura  = getTexture("piedras-textura");
+    rosas_textura = getTexture("rosas-textura");
 
     /** Mapas de Normales */         
     piedra_normal  = getTexture("piedras-normal"); 
+    rosas_normal = getTexture("rosas-textura");
 
     /** Mapas de Revielve */         
     piedra_relieve  = getTexture("piedras-relieve"); 
+    rosas_relieve = getTexture("rosas-textura");
      
 }
 

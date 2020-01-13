@@ -4,20 +4,18 @@ class Prototipo{
 
         /**Plano de referencia */
         var geometria = new Plano(200,200,[0.9,0.9,0.9]);
-        this.plano = new Objeto(geometria);
+            this.plano = new Objeto(geometria);
 
         /**Escaleras */
+        var geometria_esc_1 = new Rectangulo(70,5,8,[1,1,1],50,50);
 
-        var geometria_esc_1_1 = new Rectangulo(70,5,8,[1,1,1],50,50);
-            this.escalera_1_1 = new Objeto(geometria_esc_1_1)
-        var geometria_esc_1_2 = new Rectangulo(70,5,6,[1,1,1],50,50);
-            this.escalera_1_2 = new Objeto(geometria_esc_1_2)
-        var geometria_esc_1_3 = new Rectangulo(70,5,4,[1,1,1],50,50);
-            this.escalera_1_3 = new Objeto(geometria_esc_1_3)
-        var geometria_esc_1_4 = new Rectangulo(70,5,2,[1,1,1],50,50);
-            this.escalera_1_4 = new Objeto(geometria_esc_1_4)
+            this.escalera_1_1 = new Objeto(geometria_esc_1)
+            this.escalera_1_2 = new Objeto(geometria_esc_1)
+            this.escalera_1_3 = new Objeto(geometria_esc_1)
+            this.escalera_1_4 = new Objeto(geometria_esc_1)
 
         var geometria_esc_2 = new Rectangulo(10,8,50,[1,1,1],50,50);
+
             this.escalera_2_1 = new Objeto(geometria_esc_2)
             this.escalera_2_2 = new Objeto(geometria_esc_2)
             this.escalera_2_3 = new Objeto(geometria_esc_2)
@@ -54,7 +52,6 @@ class Prototipo{
 
             this.escalera_3_1 = new Objeto(geometria_esc_2)
             this.escalera_3_2 = new Objeto(geometria_esc_2)
-
             this.escalera_3_3 = new Objeto(geometria_esc_2)
             this.escalera_3_4 = new Objeto(geometria_esc_2)
             this.escalera_3_5 = new Objeto(geometria_esc_2)
@@ -71,47 +68,55 @@ class Prototipo{
 
         /**Pisos */
         var geometria_Base = new Rectangulo(120,160,20,[1,1,1],50,50);
-        this.base = new Objeto(geometria_Base)      
+            this.base = new Objeto(geometria_Base)      
         var geometria_Base_2 = new Rectangulo(80,80,10,[1,1,1],50,50);
-        this.base_2 = new Objeto(geometria_Base_2)
+            this.base_2 = new Objeto(geometria_Base_2)
 
         /**Techo */
         var geometria_techo_2 = new Triangulo(50,50,80,[1,1,1]);
-        this.techo_1 = new Objeto(geometria_Base_2)
-        this.techo_2 = new Objeto(geometria_techo_2)
+            this.techo_1 = new Objeto(geometria_Base_2)
+            this.techo_2 = new Objeto(geometria_techo_2)
             
         /**Casa */
         var geometria_Base_3 = new Rectangulo(60,60,60,[1,1,1],50,50);
-        this.casa = new Objeto(geometria_Base_3)
+            this.casa = new Objeto(geometria_Base_3)
 
         /**Columnas */
         var geometria_col_1 = new Cilindro(2,65,100,100,[1,1,1])
-        this.col_1 = new Objeto(geometria_col_1)
-        this.col_2 = new Objeto(geometria_col_1)
-        this.col_3 = new Objeto(geometria_col_1)
-        this.col_4 = new Objeto(geometria_col_1)
-        this.col_5 = new Objeto(geometria_col_1)
-        this.col_6 = new Objeto(geometria_col_1)
-        this.col_7 = new Objeto(geometria_col_1)
-        this.col_8 = new Objeto(geometria_col_1)
-        this.col_9 = new Objeto(geometria_col_1)
-        this.col_10 = new Objeto(geometria_col_1)
-        this.col_11 = new Objeto(geometria_col_1)
-        this.col_12 = new Objeto(geometria_col_1)
-        this.col_13 = new Objeto(geometria_col_1)
-        this.col_14 = new Objeto(geometria_col_1)
-        this.col_15 = new Objeto(geometria_col_1)
-        this.col_16 = new Objeto(geometria_col_1)
-        this.col_17 = new Objeto(geometria_col_1)
-        this.col_18 = new Objeto(geometria_col_1)
+            this.col_1 = new Objeto(geometria_col_1)
+            this.col_2 = new Objeto(geometria_col_1)
+            this.col_3 = new Objeto(geometria_col_1)
+            this.col_4 = new Objeto(geometria_col_1)
+            this.col_5 = new Objeto(geometria_col_1)
+            this.col_6 = new Objeto(geometria_col_1)
+            this.col_7 = new Objeto(geometria_col_1)
+            this.col_8 = new Objeto(geometria_col_1)
+            this.col_9 = new Objeto(geometria_col_1)
+            this.col_10 = new Objeto(geometria_col_1)
+            this.col_11 = new Objeto(geometria_col_1)
+            this.col_12 = new Objeto(geometria_col_1)
+            this.col_13 = new Objeto(geometria_col_1)
+            this.col_14 = new Objeto(geometria_col_1)
+            this.col_15 = new Objeto(geometria_col_1)
+            this.col_16 = new Objeto(geometria_col_1)
+            this.col_17 = new Objeto(geometria_col_1)
+            this.col_18 = new Objeto(geometria_col_1)
 
         /**Ecaleras Gigante 1 */
         var geometria_esc_central = new Triangulo(175,280,5,[1,1,1]);
-        this.base_esc_1_1 = new Objeto(geometria_esc_central)
-        this.base_esc_1_2 = new Objeto(geometria_esc_central)
+            this.base_esc_1_1 = new Objeto(geometria_esc_central)
+            this.base_esc_1_2 = new Objeto(geometria_esc_central)
+
         var geometria_esc_central_2 = new Triangulo(120,160,5,[1,1,1]);
-        this.base_esc_2_1 = new Objeto(geometria_esc_central_2)
-        this.base_esc_2_2 = new Objeto(geometria_esc_central_2)
+            this.base_esc_2_1 = new Objeto(geometria_esc_central_2)
+            this.base_esc_2_2 = new Objeto(geometria_esc_central_2)
+
+        /** Campo de Flores */
+        var geometria_campo_1 = new Plano(200,50,[1,1,1])
+            this.campoRosas_1 = new Objeto(geometria_campo_1)
+        var geometria_campo_2 = new Plano(20,20,[1,1,1])
+            this.campoRosas_2 = new Objeto(geometria_campo_2)
+
 
         
         /**Agregar Hijos */
@@ -182,7 +187,6 @@ class Prototipo{
 
         this.base_esc_2_1.addChildren(this.escalera_3_1)
         this.base_esc_2_1.addChildren(this.escalera_3_2)
-
         this.base_esc_2_1.addChildren(this.escalera_3_3)
         this.base_esc_2_1.addChildren(this.escalera_3_4)
         this.base_esc_2_1.addChildren(this.escalera_3_5)
@@ -197,13 +201,13 @@ class Prototipo{
         this.base_esc_2_1.addChildren(this.escalera_3_14)
         this.base_esc_2_1.addChildren(this.escalera_3_15)
 
-
         /**Configuracion inicial */
         this.configuracion();
+
     }
 
-    configuracion(){
 
+    configuracion(){
 
         /** Valores de mapas */
         this.plano.setMapaDifuso(piedra_textura);
@@ -211,11 +215,21 @@ class Prototipo{
         this.plano.setMapaRelieve(piedra_relieve);
         this.plano.coheficienteRelieve(280.0);
 
+        this.campoRosas_1.setMapaDifuso(rosas_textura);
+        this.campoRosas_1.setMapaNormal(rosas_normal);
+        this.campoRosas_1.setMapaRelieve(rosas_relieve);
+        this.campoRosas_1.coheficienteRelieve(1.0);
+
         /** Estilo */
         this.plano.textura(true);
         this.plano.normalMap(true);
         this.plano.relieve(true);
         this.plano.animacion(false);
+
+        this.campoRosas_1.textura(true);
+        this.campoRosas_1.normalMap(true);
+        this.campoRosas_1.relieve(true);
+        this.campoRosas_1.animacion(false);
         
         /** Iluminacion */
         this.plano.phongCoheficientes(0.1,2,0.2,50);
@@ -236,6 +250,8 @@ class Prototipo{
         this.base_esc_2_1.rotarY(-Math.PI/2);
         this.base_esc_2_2.rotarX(Math.PI/2);
         this.base_esc_2_2.rotarY(-Math.PI/2);
+
+        this.campoRosas_1.rotarX(Math.PI*0.22);
        
         /**Translacion */
         this.plano.trasladar([0,0,0]);
@@ -248,9 +264,9 @@ class Prototipo{
         this.base_esc_2_2.trasladar([-300,150,24]);
 
         this.escalera_1_1.trasladar([0,-22,20]);
-        this.escalera_1_2.trasladar([0,-27,20]);
-        this.escalera_1_3.trasladar([0,-32,20]);
-        this.escalera_1_4.trasladar([0,-37,20]);
+        this.escalera_1_2.trasladar([0,-27,18]);
+        this.escalera_1_3.trasladar([0,-32,16]);
+        this.escalera_1_4.trasladar([0,-37,14]);
 
         this.escalera_2_1.trasladar([0,160,2.5]);
         this.escalera_2_2.trasladar([8,155,2.5]);
@@ -326,6 +342,8 @@ class Prototipo{
         this.techo_1.trasladar([0,0,60]);
         this.techo_2.trasladar([-32,-32,-40]);
 
+        this.campoRosas_1.trasladar([75,230,14]);
+
         /** Formato de vetices */
         this.plano.setDrawType(gl.TRIANGLES);
         this.base.setDrawType(gl.TRIANGLES);
@@ -348,6 +366,8 @@ class Prototipo{
        this.base_esc_2_2.dibujar()
        this.base_esc_1_1.dibujar()
        this.base_esc_1_2.dibujar()
+
+       this.campoRosas_1.dibujar()
  
     }
 }
