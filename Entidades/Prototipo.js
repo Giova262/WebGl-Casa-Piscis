@@ -107,8 +107,7 @@ class Prototipo{
         this.plano.setMapaDifuso(ejemplo_textura);
         this.plano.setMapaNormal(ejemplo_normal);
         this.plano.setMapaRelieve(ejemplo_normal);
-
-      
+        this.plano.coheficienteRelieve(10.0);
 
         /** Estilo */
         this.plano.textura(true);

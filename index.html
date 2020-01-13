@@ -52,6 +52,7 @@
 
             uniform vec3 uCameraPos;
             uniform  float offset;
+            uniform  float offsetRelieve;
             
             uniform bool useNormalMapVertex;
             uniform bool useTextureAnimacion;
@@ -127,10 +128,10 @@
                     // Relieve sin Animacion
                     if(useDisplacementMap){      
                         vec3 relieve =  normalize( texture2D(uDisplacementSampler,vTextureCoord).rgb ) ; 
-                       // P.z += relieve.r * 15.0;
+                       // P.z += relieve.r * 150.0;
 
                        if(relieve.r >= 0.05 ){ 
-                            P.xyz += relieve.r * 7.0 * uNMatrix * aVertexNormal;
+                            P.xyz += relieve.r * offsetRelieve * uNMatrix * aVertexNormal;
                        }
                     }
                 }        
@@ -247,11 +248,11 @@
 
         <script type="text/javascript" src="Utils/Menu.js"></script>
 
-        <img id="ejemplo-textura" crossOrigin = "anonymous" src="Texturas/Difusas/rosas2.jpg"  width="0" height="0"></img> 
-        <img id="ejemplo-normal" crossOrigin = "anonymous" src="Texturas/Normales/rosas2N.png"  width="0" height="0"></img> 
+        <img id="ejemplo-textura" crossOrigin = "anonymous" src="Texturas/Difusas/piedras.jpg"  width="0" height="0"></img> 
+        <img id="ejemplo-normal" crossOrigin = "anonymous" src="Texturas/Normales/piedrasN.png"  width="0" height="0"></img> 
 
         <img id="roca-textura" crossOrigin = "anonymous" src="Texturas/Difusas/piedras.jpg"  width="0" height="0"></img> 
-        <img id="roca-normal" crossOrigin = "anonymous" src="Texturas/Difusas/piedras.jpg"  width="0" height="0"></img> 
+        <img id="roca-normal" crossOrigin = "anonymous" src="Texturas/Normales/piedrasN.png"  width="0" height="0"></img> 
 
         
         <center>
