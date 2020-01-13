@@ -5,7 +5,7 @@ var previousClientX = 0,
     radio = 1550,
     radio2 = 0;
     escala= 1.0;
-    alfa = Math.PI, 
+    alfa = Math.PI/2, 
     beta = Math.PI/4.0, 
     factorVelocidad = 0.01;
     ZOOM = 0.007;
@@ -163,7 +163,7 @@ class Camara{
         var y = radio * escala * Math.sin(alfa) * Math.sin(beta);
         var z = radio * escala * Math.cos(beta);
 
-        mat4.lookAt(viewMatrix, [x, y, z], [0, 0, 0], [0,0,1]);
+        mat4.lookAt(viewMatrix, [x, y, z], [0, 0, 150], [0,0,1]);
         gl.uniformMatrix4fv(viewMatrixLocation, false, viewMatrix);
         
         gl.uniform3f(cameraPosLocation,x,y,z);
