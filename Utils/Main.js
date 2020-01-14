@@ -54,6 +54,14 @@ var     canvas = null;
         rosas_normal = null;
         rosas_relieve = null;
 
+        marmol_textura = null;
+        marmol_normal = null;
+        marmol_relieve = null;
+
+        casa_textura = null;
+        casa_normal = null;
+        casa_relieve = null;
+
     
     /** Matrices */
 
@@ -262,20 +270,25 @@ function configuracionInicial(){
 
 
 function initTextures(){
-
-  
+ 
 
     /** Mapas de Texturas */
     piedra_textura  = getTexture("piedras-textura");
     rosas_textura = getTexture("rosas-textura");
+    marmol_textura = getTexture("marmol-textura");
+    casa_textura = getTexture("casa-textura");
 
     /** Mapas de Normales */         
     piedra_normal  = getTexture("piedras-normal"); 
-    rosas_normal = getTexture("rosas-textura");
+    rosas_normal = getTexture("rosas-normal");
+    marmol_normal = getTexture("marmol-normal");
+    casa_normal = getTexture("casa-normal");
 
     /** Mapas de Revielve */         
     piedra_relieve  = getTexture("piedras-relieve"); 
-    rosas_relieve = getTexture("rosas-textura");
+    rosas_relieve = getTexture("rosas-relieve");
+    marmol_relieve = getTexture("marmol-relieve");
+    casa_relieve = getTexture("casa-relieve");
      
 }
 

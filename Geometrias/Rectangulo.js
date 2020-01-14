@@ -140,41 +140,97 @@ class Rectangulo extends Dibujable{
 
                 this.texture_list = [
                     // Cara Frontal.
-                        0,1/3,
-                        0,2/3,
-                        1/4,1/3,
-                        1/4,2/3,
+                       
+                        0.8,0.8,
+                        0.8,1,
+                        1,1,
+                        1,0.8,
                                     
                     // Cara Superior.
-                        1/4,1,
-                        1/4,2/3,
-                        1/2,1,
-                        1/2,2/3,
+                    0.8,0.8,
+                    0.8,1,
+                    1,1,
+                    1,0.8,
+                   
                         
                     // Cara Posterior.
-                        1/4,1/3,
-                        1/4,2/3,
-                        1/2,1/3,
-                        1/2,2/3,
+                    0,0,
+                    0,0.5,
+                    0.5,0.5,
+                    ,0,
                                     
                     // Cara Lateral Derecha.
-                        1/4,0,
-                        1/4,1/3,
-                        1/2,0,
-                        1/2,1/3,
+                    0.8,0.8,
+                        0.8,1,
+                        1,1,
+                        1,0.8,
+                   
                         
                     // Cara Inferior.
-                        1/2,1/3,
-                        1/2,2/3,
-                        3/4,1/3,
-                        3/4,2/3,
+                    0.8,0.8,
+                    0.8,1,
+                    1,1,
+                    1,0.8,
                                     
                     // Cara Lateral Izquierda.
-                        3/4,1/3,
-                        3/4,2/3,
-                        1,1/3,
-                        1,2/3
+                    0.8,0.8,
+                    0.8,1,
+                    1,1,
+                    1,0.8
+                    
                     ];
+
+                  /*  this.index_list.push(0)
+                    this.index_list.push(1)
+                    this.index_list.push(2)
+
+                    this.index_list.push(0)
+                    this.index_list.push(2)
+                    this.index_list.push(3)
+
+                    this.index_list.push(4)
+                    this.index_list.push(5)
+                    this.index_list.push(6)
+
+                    this.index_list.push(4)
+                    this.index_list.push(6)
+                    this.index_list.push(7)
+
+                    this.index_list.push(8)
+                    this.index_list.push(9)
+                    this.index_list.push(10)
+                    
+                    this.index_list.push(8)
+                    this.index_list.push(10)
+                    this.index_list.push(11)
+
+                    this.index_list.push(12)
+                    this.index_list.push(14)
+                    this.index_list.push(15)
+
+                    this.index_list.push(12)
+                    this.index_list.push(15)
+                    this.index_list.push(16)
+
+                    
+                    this.index_list.push(16)
+                    this.index_list.push(17)
+                    this.index_list.push(18)
+
+                    
+                    this.index_list.push(16)
+                    this.index_list.push(18)
+                    this.index_list.push(19)
+
+                    
+                    this.index_list.push(20)
+                    this.index_list.push(21)
+                    this.index_list.push(22)
+
+                    
+                    this.index_list.push(20)
+                    this.index_list.push(22)
+                    this.index_list.push(23)*/
 
                     for(var i = 0; i < 24 ; i += 4){
 			

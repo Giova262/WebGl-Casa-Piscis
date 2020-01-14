@@ -114,7 +114,7 @@ class Prototipo{
         /** Campo de Flores */
         var geometria_campo_1 = new Plano(200,50,[1,1,1])
             this.campoRosas_1 = new Objeto(geometria_campo_1)
-        var geometria_campo_2 = new Plano(20,20,[1,1,1])
+        var geometria_campo_2 = new Plano(30,150,[1,1,1])
             this.campoRosas_2 = new Objeto(geometria_campo_2)
 
 
@@ -220,6 +220,34 @@ class Prototipo{
         this.campoRosas_1.setMapaRelieve(rosas_relieve);
         this.campoRosas_1.coheficienteRelieve(1.0);
 
+        this.campoRosas_2.setMapaDifuso(rosas_textura);
+        this.campoRosas_2.setMapaNormal(rosas_normal);
+        this.campoRosas_2.setMapaRelieve(rosas_relieve);
+        this.campoRosas_2.coheficienteRelieve(8.0);
+
+        this.techo_2.setMapaDifuso(marmol_textura);
+        this.techo_2.setMapaNormal(marmol_normal);
+        this.techo_2.setMapaRelieve(marmol_relieve);
+       
+        this.techo_1.setMapaDifuso(marmol_textura);
+        this.techo_1.setMapaNormal(marmol_normal);
+        this.techo_1.setMapaRelieve(marmol_relieve);
+        
+        this.techo_1.setMapaDifuso(marmol_textura);
+        this.techo_1.setMapaNormal(marmol_normal);
+        this.techo_1.setMapaRelieve(marmol_relieve);
+        this.techo_1.coheficienteRelieve(2.0);
+
+        this.base.setMapaDifuso(marmol_textura);
+        this.base.setMapaNormal(marmol_normal);
+        this.base.setMapaRelieve(marmol_relieve);
+        this.base.coheficienteRelieve(2.0);
+
+        this.casa.setMapaDifuso(casa_textura);
+        this.casa.setMapaNormal(casa_normal);
+        this.casa.setMapaRelieve(casa_relieve);
+        this.casa.coheficienteRelieve(2.0);
+
         /** Estilo */
         this.plano.textura(true);
         this.plano.normalMap(true);
@@ -230,9 +258,35 @@ class Prototipo{
         this.campoRosas_1.normalMap(true);
         this.campoRosas_1.relieve(true);
         this.campoRosas_1.animacion(false);
+
+        this.campoRosas_2.textura(true);
+        this.campoRosas_2.normalMap(true);
+        this.campoRosas_2.relieve(true);
+        this.campoRosas_2.animacion(false);
+
+        this.techo_2.textura(true);
+        this.techo_2.normalMap(true);
+        this.techo_2.relieve(false);
+        this.techo_2.animacion(false);
         
+        this.techo_1.textura(true);
+        this.techo_1.normalMap(false);
+        this.techo_1.relieve(false);
+        this.techo_1.animacion(false);
+
+        this.base.textura(true);
+        this.base.normalMap(false);
+        this.base.relieve(false);
+        this.base.animacion(false);
+
+        this.casa.textura(true);
+        this.casa.normalMap(false);
+        this.casa.relieve(false);
+        this.casa.animacion(false);
+
         /** Iluminacion */
         this.plano.phongCoheficientes(0.1,2,0.2,50);
+        this.techo_1.phongCoheficientes(1,1,0.5,1);
         
         /**Escalar */
         this.plano.escalar([3,3,1]);
@@ -252,11 +306,14 @@ class Prototipo{
         this.base_esc_2_2.rotarY(-Math.PI/2);
 
         this.campoRosas_1.rotarX(Math.PI*0.22);
+        this.campoRosas_2.rotarZ(Math.PI*0.5);
        
         /**Translacion */
         this.plano.trasladar([0,0,0]);
 
         this.base.trasladar([0,80,150]);
+
+        //this.casa.trasladar([0,0,150]);
 
         this.base_esc_1_1.trasladar([0,0,-24]);
         this.base_esc_1_2.trasladar([0,0,24]);
@@ -343,6 +400,7 @@ class Prototipo{
         this.techo_2.trasladar([-32,-32,-40]);
 
         this.campoRosas_1.trasladar([75,230,14]);
+        this.campoRosas_2.trasladar([20,20,168]);
 
         /** Formato de vetices */
         this.plano.setDrawType(gl.TRIANGLES);
@@ -368,6 +426,7 @@ class Prototipo{
        this.base_esc_1_2.dibujar()
 
        this.campoRosas_1.dibujar()
+       this.campoRosas_2.dibujar()
  
     }
 }
