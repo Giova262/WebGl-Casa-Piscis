@@ -62,6 +62,10 @@ var     canvas = null;
         casa_normal = null;
         casa_relieve = null;
 
+        afrodita_textura = null;
+        afrodita_normal = null;
+        afrodita_relieve = null;
+
     
     /** Matrices */
 
@@ -277,18 +281,21 @@ function initTextures(){
     rosas_textura = getTexture("rosas-textura");
     marmol_textura = getTexture("marmol-textura");
     casa_textura = getTexture("casa-textura");
+    afrodita_textura = getTexture("afrodita-textura");
 
     /** Mapas de Normales */         
     piedra_normal  = getTexture("piedras-normal"); 
     rosas_normal = getTexture("rosas-normal");
     marmol_normal = getTexture("marmol-normal");
     casa_normal = getTexture("casa-normal");
+    afrodita_normal = getTexture("afrodita-normal");
 
     /** Mapas de Revielve */         
     piedra_relieve  = getTexture("piedras-relieve"); 
     rosas_relieve = getTexture("rosas-relieve");
     marmol_relieve = getTexture("marmol-relieve");
     casa_relieve = getTexture("casa-relieve");
+    afrodita_relieve = getTexture("afrodita-relieve");
      
 }
 

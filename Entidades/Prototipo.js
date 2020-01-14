@@ -116,6 +116,11 @@ class Prototipo{
             this.campoRosas_1 = new Objeto(geometria_campo_1)
         var geometria_campo_2 = new Plano(30,150,[1,1,1])
             this.campoRosas_2 = new Objeto(geometria_campo_2)
+            this.campoRosas_3 = new Objeto(geometria_campo_2)
+
+        /**Afrodita */
+        var geometria_afrodita= new Plano(20,60,[1,1,1])
+        this.afrodita = new Objeto(geometria_afrodita)
 
 
         
@@ -126,6 +131,7 @@ class Prototipo{
         this.base.addChildren(this.escalera_1_3)
         this.base.addChildren(this.escalera_1_4)
         this.base.addChildren(this.base_2)
+        this.base.addChildren(this.afrodita)
 
         this.base_2.addChildren(this.col_1)
         this.base_2.addChildren(this.col_2)
@@ -225,6 +231,11 @@ class Prototipo{
         this.campoRosas_2.setMapaRelieve(rosas_relieve);
         this.campoRosas_2.coheficienteRelieve(8.0);
 
+        this.campoRosas_3.setMapaDifuso(rosas_textura);
+        this.campoRosas_3.setMapaNormal(rosas_normal);
+        this.campoRosas_3.setMapaRelieve(rosas_relieve);
+        this.campoRosas_3.coheficienteRelieve(8.0);
+
         this.techo_2.setMapaDifuso(marmol_textura);
         this.techo_2.setMapaNormal(marmol_normal);
         this.techo_2.setMapaRelieve(marmol_relieve);
@@ -248,6 +259,15 @@ class Prototipo{
         this.casa.setMapaRelieve(casa_relieve);
         this.casa.coheficienteRelieve(2.0);
 
+        
+
+        this.afrodita.setMapaDifuso(afrodita_textura);
+        this.afrodita.setMapaNormal(afrodita_normal);
+        this.afrodita.setMapaRelieve(afrodita_relieve);
+        this.afrodita.coheficienteRelieve(2.0);
+
+
+
         /** Estilo */
         this.plano.textura(true);
         this.plano.normalMap(true);
@@ -263,6 +283,11 @@ class Prototipo{
         this.campoRosas_2.normalMap(true);
         this.campoRosas_2.relieve(true);
         this.campoRosas_2.animacion(false);
+
+        this.campoRosas_3.textura(true);
+        this.campoRosas_3.normalMap(true);
+        this.campoRosas_3.relieve(true);
+        this.campoRosas_3.animacion(false);
 
         this.techo_2.textura(true);
         this.techo_2.normalMap(true);
@@ -283,6 +308,11 @@ class Prototipo{
         this.casa.normalMap(false);
         this.casa.relieve(false);
         this.casa.animacion(false);
+
+        this.afrodita.textura(true);
+        this.afrodita.normalMap(false);
+        this.afrodita.relieve(false);
+        this.afrodita.animacion(false);
 
         /** Iluminacion */
         this.plano.phongCoheficientes(0.1,2,0.2,50);
@@ -307,6 +337,10 @@ class Prototipo{
 
         this.campoRosas_1.rotarX(Math.PI*0.22);
         this.campoRosas_2.rotarZ(Math.PI*0.5);
+        this.campoRosas_3.rotarZ(Math.PI*0.5);
+
+        this.afrodita.rotarX(-Math.PI*0.5);
+        this.afrodita.rotarZ(-Math.PI*0.5);
        
         /**Translacion */
         this.plano.trasladar([0,0,0]);
@@ -401,6 +435,9 @@ class Prototipo{
 
         this.campoRosas_1.trasladar([75,230,14]);
         this.campoRosas_2.trasladar([20,20,168]);
+        this.campoRosas_3.trasladar([20,100,168]);
+
+        this.afrodita.trasladar([30,20,-30]);
 
         /** Formato de vetices */
         this.plano.setDrawType(gl.TRIANGLES);
@@ -427,6 +464,9 @@ class Prototipo{
 
        this.campoRosas_1.dibujar()
        this.campoRosas_2.dibujar()
+       this.campoRosas_3.dibujar()
+
+       this.afrodita .dibujar();
  
     }
 }
