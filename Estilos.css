@@ -1,6 +1,5 @@
 body{ 
     background-color: rgba(4, 38, 73, 0.801); 
-    
 }
 h1 {
     text-align: center;
@@ -23,3 +22,8 @@ h3{
 .tiempo{font-size: 20px}
 canvas{ background-color: white;}
 textarea{ background-color: black; }
+.clasePrueba{
+    background-color: aquamarine;
+    display: inline;
+    flex-direction: column;
+}
